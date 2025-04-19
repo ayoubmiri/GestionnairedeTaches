@@ -1,11 +1,13 @@
 const express = require('express');
-const cors = require('cors');
 const app = express();
 
-app.use(cors());
+// Middleware
 app.use(express.json());
 
-// Routes existantes...
-app.get('/api', (req, res) => res.json({ message: "API Works!" }));
+// Routes
+app.get('/api/tasks', (req, res) => {
+  res.json([{ id: 1, title: "Sample Task" }]);
+});
 
-module.exports = app; // Important pour Vercel
+// Vercel requires module.exports
+module.exports = app;
